@@ -23,8 +23,13 @@ h1 {
     padding: 2px 5px;
 }
 
-.range-block label {
-    margin-left: 10px;
+.range-inputs {
+    margin-bottom: 10px;
+}
+
+.results-label {
+    display: block;
+    margin-top: 10px;
 }
 
 .remove-range {

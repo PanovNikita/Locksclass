@@ -20,8 +20,10 @@ function addRangeBlock(from = "", to = "", skat = false) {
     div.className = "range-block";
 
     div.innerHTML = `
+    <div class="range-inputs">
     От: <input type="text" class="range-from" value="${from}">
     До: <input type="text" class="range-to" value="${to}">
+    </div>
     <label><input type="checkbox" class="range-skat" ${skat ? "checked" : ""}> СКАТ</label>
     <span class="remove-range">🗑</span>
   `;
@@ -126,7 +128,8 @@ function renderResults(total, details) {
     resultsDiv.innerHTML = "";
 
     const numRanges = details.length;
-    const showDetails = numRanges > 1;
+    const showDetailsCheckbox = document.getElementById("show-details").checked;
+    const showDetails = showDetailsCheckbox && numRanges > 1; // <-- исправлено
 
     // Итоговый результат
     const totalDiv = document.createElement("div");
@@ -142,7 +145,7 @@ function renderResults(total, details) {
     totalDiv.innerHTML = html;
     resultsDiv.appendChild(totalDiv);
 
-    // Промежуточные результаты (только если диапазонов больше одного)
+    // Промежуточные результаты (только если чекбокс отмечен и диапазонов > 1)
     if (showDetails) {
         details.forEach((d, idx) => {
             const block = document.createElement("div");
@@ -158,6 +161,7 @@ function renderResults(total, details) {
         });
     }
 }
+
 
 
 // ================== Анализ нескольких диапазонов ==================
