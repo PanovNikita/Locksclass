@@ -1,82 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Locks Analyser — Browser</title>
+    <meta charset="UTF-8">
+    <title>Locks Analyzer</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- PapaParse для парсинга CSV -->
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
 
 <body>
-    <header class="header">
-        <h1>🔒 Locks Analyser (browser)</h1>
-        <div id="fileInfo" class="muted">Загрузка data.csv...</div>
-    </header>
+    <h1>🔒 Locks Analyzer</h1>
 
-    <main class="container">
-        <section class="card">
-            <h2>Валидация файла</h2>
-            <div id="validationArea">
-                <div id="validationStatus" class="muted">Файл ещё не загружен</div>
-                <div id="validationErrors" class="errors"></div>
-            </div>
-        </section>
+    <!-- Диапазоны -->
+    <div id="ranges-container"></div>
+    <button id="add-range">+ Добавить диапазон</button>
+    <button id="analyze">Анализировать</button>
+    <label>
+        <input type="checkbox" id="show-details" checked>
+        Показывать промежуточные результаты
+    </label>
 
-        <section class="card two-col">
-            <div>
-                <h2>📊 Анализ диапазона</h2>
+    <!-- Результаты -->
+    <div id="results"></div>
 
-                <div class="row">
-                    <label>От: <input id="startRange" placeholder="001000 или 1000"></label>
-                    <label>До: <input id="endRange" placeholder="001020 или 1020"></label>
-                </div>
-
-                <div class="row">
-                    <label><input type="checkbox" id="isSkat"> Это СКАТ? <span class="hint"> (анализ 5 колонок +
-                            зеркалирование)</span></label>
-                </div>
-
-                <div class="row">
-                    <button id="analyzeBtn" class="primary">🔍 Анализировать диапазон</button>
-                    <button id="copyResultsBtn" class="secondary" disabled>📋 Копировать результаты</button>
-                </div>
-
-                <div id="analysisResult" class="result-area"></div>
-            </div>
-
-            <div>
-                <h2>🔍 Просмотр строки</h2>
-                <div class="row">
-                    <label>Номер строки: <input id="rowNumber" placeholder="001010 или 1010"></label>
-                </div>
-                <div class="row">
-                    <button id="showRowBtn" class="primary">👁️ Показать строку</button>
-                </div>
-                <div id="rowDisplay" class="result-area"></div>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2>ℹ️ Справка</h2>
-            <div class="muted small">
-                <p><b>Как использовать</b> — введите диапазон (От / До) в формате <code>001234</code> или
-                    <code>1234</code>.</p>
-                <p>Режим <b>СКАТ</b> анализирует только первые 5 колонок и добавляет зеркальные числа при подсчёте
-                    (логика как в оригинале).</p>
-                <p>В браузере мы не можем получить точное время изменения файла на сервере — показано время загрузки
-                    (fetch).</p>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <small>Поместите <code>index.html</code>, <code>style.css</code>, <code>script.js</code> и <code>data.csv</code>
-            в корень репозитория и включите GitHub Pages.</small>
-    </footer>
+    <!-- Просмотр одной строки -->
+    <h3>Просмотр строки</h3>
+    <label>Номер строки: <input type="text" id="row-number" placeholder="001010 или 1010"></label>
+    <button id="show-row">Показать строку</button>
+    <div id="row-result"></div>
 
     <script src="script.js"></script>
 </body>
