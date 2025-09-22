@@ -1,0 +1,140 @@
+:root {
+    --bg: #f6f7fb;
+    --card: #fff;
+    --accent: #0b5ed7;
+    --muted: #666;
+    --pad: 14px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    margin: 0;
+    padding: 18px;
+    background: var(--bg);
+    color: #111;
+}
+
+.header {
+    max-width: 1100px;
+    margin: 0 auto 14px
+}
+
+h1 {
+    margin: 0;
+    color: var(--accent)
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 14px
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.card {
+    background: var(--card);
+    padding: var(--pad);
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(10, 20, 40, 0.06)
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 8px 0
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #e1e6f0;
+    border-radius: 6px;
+    min-width: 180px
+}
+
+button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+button.secondary {
+    background: #555
+}
+
+button.primary {
+    background: var(--accent)
+}
+
+.result-area {
+    margin-top: 10px;
+    background: #fbfcff;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #eef2ff;
+    max-height: 520px;
+    overflow: auto
+}
+
+.errors {
+    color: #b00020
+}
+
+small {
+    color: var(--muted)
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 13px;
+    margin-left: 8px
+}
+
+.footer {
+    max-width: 1100px;
+    margin: 12px auto;
+    color: var(--muted)
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse
+}
+
+td,
+th {
+    padding: 6px 8px;
+    border-bottom: 1px solid #f0f4ff;
+    text-align: left
+}
+
+pre {
+    white-space: pre-wrap;
+    font-family: monospace;
+    background: #fbfbfb;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #eee
+}
